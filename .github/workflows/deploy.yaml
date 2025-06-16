@@ -1,20 +1,26 @@
-name: Test Project
+name: Deployment
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v3
+      
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - run: yarn install
+
       - run: yarn run build
 
+      - run: ls
 
+
+      
